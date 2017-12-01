@@ -1,0 +1,38 @@
+package main;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+public class Catch {
+//	http://ysdx.sdcen.cn/study/directory.aspx?CourseOpenId=ecccb477-1ecc-4dcb-a351-9e2f4e53bc0d&topicId=630327801rdagayunyj9geteqwfvt3g
+	public static String dataid="630327801njagayunnirm7okdrzsizg";
+	public static String  kmid="ecccb477-1ecc-4dcb-a351-9e2f4e53bc0d";
+	public static String url="http://ysdx.sdcen.cn/study/directory.aspx?CourseOpenId="+kmid+"&topicId="+dataid;
+	
+	public static void  getMainHtml() throws Exception{
+		String htmlPage = util.getHTMLPage(url, "auth=010281DE72380A37D508FE819EDC62D337D5080024440038003400360032003100440032002D0046003800330043002D0034004500370032002D0038004500380044002D0034003600390038003800350037003100450033004400390000012F00FF5F33187CFBA550A22C2912C658E4F0FD664C5498; ASP.NET_SessionId=5vhtop3o02sojtsnl5zpikez; jwplayer.captionLabel=Off; Hm_lvt_e68d5ef99d1de96286dd5ccebd66bef4=1511947049; Hm_lpvt_e68d5ef99d1de96286dd5ccebd66bef4=1511947867", "http://ysdx.sdcen.cn/study/learnCatalog.aspx?courseOpenId="+kmid);
+		String url2="http://ysdx.sdcen.cn/study/action-directory-getCell?cellId=630327801jqqiayunsz5cd7spwku2fg";
+		Document doc = Jsoup.parse(htmlPage);
+//		System.out.println(htmlPage);
+		Elements elementsByClass = doc.getElementsByClass("cell_info");
+		for (Element element : elementsByClass) {
+			System.out.println(element.prependText(htmlPage).attr("data-id"));
+		}
+		
+		String htmlPage2=util.getHTMLPage(url2, "auth=010281DE72380A37D508FE819EDC62D337D5080024440038003400360032003100440032002D0046003800330043002D0034004500370032002D0038004500380044002D0034003600390038003800350037003100450033004400390000012F00FF5F33187CFBA550A22C2912C658E4F0FD664C5498; ASP.NET_SessionId=5vhtop3o02sojtsnl5zpikez; jwplayer.captionLabel=Off; Hm_lvt_e68d5ef99d1de96286dd5ccebd66bef4=1511947049; Hm_lpvt_e68d5ef99d1de96286dd5ccebd66bef4=1511947867", "http://ysdx.sdcen.cn/study/directory.aspx?CourseOpenId=ecccb477-1ecc-4dcb-a351-9e2f4e53bc0d&topicId=630327801rdagayunyj9geteqwfvt3g");
+		
+		System.out.println(htmlPage2);
+		/*Elements elementsByClass2 = doc.getElementsByClass("am-hide");
+		for (Element element2 : elementsByClass2) {
+			System.out.println(element2.prependText(htmlPage2).attr("hide_logId"));
+		}*/
+	}
+	
+	public static void main(String[] args) throws Exception {
+		getMainHtml();
+	}
+	
+	
+}

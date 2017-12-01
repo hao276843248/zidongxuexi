@@ -1,0 +1,82 @@
+package main;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.AbstractHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.params.ClientPNames;
+import org.apache.http.client.params.CookiePolicy;
+import org.apache.http.cookie.Cookie;
+
+public class main {
+
+//	http://ysdx.sdcen.cn/study/action-directory-CellLeaveLog?logId=rucgadqopzfdmit4pc06xa&videoEndTime=0&stopSconds=0
+//	http://ysdx.sdcen.cn/study/action-directory-CellLeaveLog?logId=r10gadqorilh4enug2p4xg&videoEndTime=0&stopSconds=0
+	
+	public static Map<String, String> url=new HashMap<String, String>();
+	
+	 public static void main(String[] args) throws Exception {
+		 
+
+		 
+		 String UserName="";
+		 String password="";
+		 
+		 
+		 String htmlPage = getHTMLPage("http://ysdx.sdcen.cn/study/directory.aspx?CourseOpenId=ecccb477-1ecc-4dcb-a351-9e2f4e53bc0d&topicId=630327801stagayunkadp5rxjgjoxvq");
+		 System.out.println(htmlPage);
+		 System.out.println(System.currentTimeMillis());
+		 util.getHTMLPage(url, cookie, Referer);
+//		 1511930603
+//		 1511931011
+//		 1511931333
+//		 1511931807
+//		 1511931835
+	 }
+	  
+	 
+	
+
+	    
+	    private boolean login2Site() throws Exception {
+			return false;
+	        // 代码略
+	    }
+
+	    
+	    // 抓取页面
+	    private static String getHTMLPage(String url) throws Exception {
+	        String result = "";
+
+	        
+	        HttpGet httpget = new HttpGet(url);
+	        httpget.setHeader("Referer", "http://ysdx.sdcen.cn/study/learnCatalog.aspx?courseOpenId=ecccb477-1ecc-4dcb-a351-9e2f4e53bc0d");
+	        httpget.setHeader("Cookie", "ASP.NET_SessionId=5niiagvaloukxooppy24vgbq; jwplayer.captionLabel=Off; auth=01021236D11D8C36D508FE12F63A485537D5080024440038003400360032003100440032002D0046003800330043002D0034004500370032002D0038004500380044002D0034003600390038003800350037003100450033004400390000012F00FFD7765DB7910509B675C044A6DF4B537D87BAE154; Hm_lvt_e68d5ef99d1de96286dd5ccebd66bef4=1511892969; Hm_lpvt_e68d5ef99d1de96286dd5ccebd66bef4=1511931011");
+	        HttpResponse response = m_httpClient.execute(httpget);
+	        HttpEntity entity = response.getEntity();
+	        result = EntityUtils.toString(entity, "UTF-8");
+	        httpget.releaseConnection();
+
+	        
+	        return result;
+	    }
+
+	    private String getCookies() {
+	        StringBuilder sb = new StringBuilder();
+	        List<Cookie> cookies = ((AbstractHttpClient)m_httpClient).getCookieStore().getCookies();
+	        for(Cookie cookie: cookies)
+	            sb.append("ASP.NET_SessionId=5niiagvaloukxooppy24vgbq; jwplayer.captionLabel=Off; auth=01021236D11D8C36D508FE12F63A485537D5080024440038003400360032003100440032002D0046003800330043002D0034004500370032002D0038004500380044002D0034003600390038003800350037003100450033004400390000012F00FFD7765DB7910509B675C044A6DF4B537D87BAE154; Hm_lvt_e68d5ef99d1de96286dd5ccebd66bef4=1511892969; Hm_lpvt_e68d5ef99d1de96286dd5ccebd66bef4=1511933171");
+	        // 除了HttpClient自带的Cookie，自己还可以增加自定义的Cookie
+	        // 增加代码...
+
+	        
+	        return sb.toString();
+	    }
+}

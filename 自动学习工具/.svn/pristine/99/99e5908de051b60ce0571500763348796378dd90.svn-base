@@ -1,0 +1,16 @@
+package main;
+
+public class test {
+
+	
+	public static void main(String[] args) throws Exception {
+		System.out.println(System.currentTimeMillis());
+		
+//		util.getURLContent("http://ysdx.sdcen.cn/stumanager/default.aspx");
+		
+		String htmlPage = util.getHTMLPage("http://ysdx.sdcen.cn/stumanager/default.aspx", "auth=0102DBA7B705EE36D508FEDB672130B737D5080024440038003400360032003100440032002D0046003800330043002D0034004500370032002D0038004500380044002D0034003600390038003800350037003100450033004400390000012F00FF686915B4475C187DA70A02CB097BB30BA48FD12C", "http://ysdx.sdcen.cn/portal/home.aspx");
+		System.out.println(htmlPage);
+		
+//		util.getresponse(null);
+	}
+}
